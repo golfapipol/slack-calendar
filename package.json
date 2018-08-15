@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js",
+    "prestart": "npm run build",
+    "build": "./node_modules/@babel/cli/bin/babel.js src --source-maps --out-dir dist"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,31 @@
   "bugs": {
     "url": "https://github.com/golfapipol/slack-calendar/issues"
   },
-  "homepage": "https://github.com/golfapipol/slack-calendar#readme"
+  "homepage": "https://github.com/golfapipol/slack-calendar#readme",
+  "dependencies": {
+    "googleapis": "^27.0.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-rc.1",
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-rc.1",
+    "babel-jest": "^18.0.0",
+    "jest-cli": "^20.0.4"
+  },
+  "jest": {
+    "transform": {
+      ".*": "<rootDir>/node_modules/babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/spec/",
+      "/dist/"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|json)$"
+  }
 }
