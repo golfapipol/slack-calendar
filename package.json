@@ -6,8 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./index.js",
-    "prestart": "npm run build",
-    "build": "./node_modules/@babel/cli/bin/babel.js src --source-maps --out-dir dist"
+    "prestart": "npm run build && npm run tslint",
+    "build:watch": "tsc -w",
+    "build": "tsc",
+    "tslint": "tslint -c tslint.json -p tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,9 @@
     "@babel/cli": "^7.0.0-rc.1",
     "@babel/core": "^7.0.0-rc.1",
     "@babel/preset-env": "^7.0.0-rc.1",
+    "@types/body-parser": "^1.17.0",
+    "@types/express": "^4.16.0",
+    "@types/request": "^2.47.1",
     "babel-jest": "^18.0.0",
     "jest-cli": "^20.0.4"
   },
